@@ -9,10 +9,6 @@ cardBackOptions.forEach((cardName) => {
     cardBackDeck.push(card);
 });
 
-console.log('print cardBackDeck:')
-console.log(cardBackDeck)
-
-
 const gridDisplay = document.querySelector('#grid')
 const resultDisplay = document.querySelector('#result')
 let cardsChosen = []
@@ -24,9 +20,7 @@ let currentDeck = []
 
 let AllPairsOfCards = []
 
-/* var storedSelectedCardBackIndex = 0
- *//* let selectedback = 0
- */
+
  function loadSelectedCardBack() {
     let storedSelectedCardBackIndex = localStorage.getItem("selectedCardBackIndex");
     if (storedSelectedCardBackIndex) {
@@ -53,13 +47,9 @@ function getQueryParam(name) {
 
 
 function changecardback() {
-    console.log("launching the function:");
-    console.log(storedSelectedCardBackIndex);
     gridDisplay.innerHTML = "";
     storedSelectedCardBackIndex += 1;
     if (storedSelectedCardBackIndex >= cardBackDeck.length) {
-        console.log("inside if statement:");
-        console.log(storedSelectedCardBackIndex);
 
         storedSelectedCardBackIndex = 0;
     }
@@ -67,11 +57,7 @@ function changecardback() {
     // Update the local storage with the new selected card back index
     localStorage.setItem("selectedCardBackIndex", storedSelectedCardBackIndex);
 
-    console.log("after function:");
-    console.log(storedSelectedCardBackIndex);
     createBoard(difficulty, storedSelectedCardBackIndex);
-    console.log("after createboard:");
-    console.log(storedSelectedCardBackIndex);
 }
 
 function shuffleArray(array) {
@@ -107,19 +93,6 @@ function resetGameState(){
     currentDeck = []
     AllPairsOfCards = []
 }
-/* 
-console.log('cutting to difficulty level:')
-console.log(AllPairsOfCards.slice(0, difficulty))
- */
-
-/* function setGridSize(difficulty) {
-    const gridDisplay = document.querySelector("#grid");
-    const numCards = difficulty * 2;
-    const numRows = Math.ceil(Math.sqrt(numCards));
-    const numCols = Math.ceil(numCards / numRows);
-    gridDisplay.style.gridTemplateColumns = `repeat(${numCols}, 1fr)`;
-    gridDisplay.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
-  } */
 
 function getOptimalGridSize(totalCards) {
     let numRows = 1;
@@ -258,8 +231,6 @@ function flipCard(){
 
     cardsChosen.push(currentDeck[cardId].name)
     cardsChosenIds.push(cardId)
-    console.log(cardsChosen)
-    console.log(cardsChosenIds)
 
     this.classList.toggle('flipped'); // Add this line here
     currentDeck[cardId].flipped = true;
@@ -375,10 +346,3 @@ if (urlCardBackIndex !== null) {
     storedSelectedCardBackIndex = parseInt(urlCardBackIndex);
 }
 createBoard(difficulty, storedSelectedCardBackIndex);
-
-/* 
-console.log("AllPairsOfCards after for loop:")
-console.log(AllPairsOfCards.slice()); */
- 
-console.log("printing the current data id:")
-console.log(storedSelectedCardBackIndex);
