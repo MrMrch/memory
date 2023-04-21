@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Memory Game</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <button id="easy">EASY</button>
+    <button id="medium">MEDIUM</button>
+    <button id="hard">HARD</button>
+
+    <button id="select-card-back">SELECT CARD BACK</button>
+    <button id="change-back">NEXT CARDS BACK</button>
+
+    <h3 style="color: white">Score: <span id="result"></span></h3>
+    "color:blue">
+    <div id="grid"></div>
+    <div id="overlay" class="overlay">
+      <div id="custom-alert" class="custom-alert">
+        <p id="custom-alert-message"></p>
+      </div>
+
+      <div class="overlay-content">
+        <h2 id="game-over-message"></h2>
+        <button id="restart-button">Restart</button>
+      </div>
+    </div>
+
+    <script src="cards.js"></script>
+    <script src="app.js"></script>
+    <script>
+      window.addEventListener("storage", (event) => {
+        if (event.key === "selectedCardBackIndex") {
+          loadSelectedCardBack();
+        }
+      });
+    </script>
+  </body>
+</html>
