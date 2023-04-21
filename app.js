@@ -269,7 +269,7 @@ function flipCard(){
         setTimeout(() => {
             checkMatch();
             enableAllCards();
-        }, 270);
+        }, 500);
     }
     
 
