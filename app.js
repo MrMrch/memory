@@ -73,7 +73,8 @@ function createUniqueDeck(uniqueCards){
         const card = {
             name: cardName,
             img: `images/${cardName}.png`,
-            flipped: false
+            flipped: false,
+            seen: false // Add the 'seen' property here
         }
     
         AllPairsOfCards.push(card);
@@ -81,6 +82,7 @@ function createUniqueDeck(uniqueCards){
           
     })    
 }
+
 
 function resetGameState(){
     cardsChosen = []
@@ -181,12 +183,25 @@ function checkMatch() {
         cards[optionTwoId].removeEventListener("click", flipCard);
         cardsWon.push(cardsChosen);
     } else {
+        // Check if we need to apply the penalty
+        if ((currentDeck[optionOneId].seen && currentDeck[optionTwoId].seen) || 
+            (currentDeck[optionOneId].seen && currentDeck[optionOneId].counterpartSeen) || 
+            (currentDeck[optionTwoId].seen && currentDeck[optionTwoId].counterpartSeen)) {
+            handicap -= 0.25;
+        }
+        if (!currentDeck[optionOneId].seen) {
+            currentDeck[optionOneId].seen = true;
+            currentDeck[optionTwoId].counterpartSeen = true;
+        }
+        if (!currentDeck[optionTwoId].seen) {
+            currentDeck[optionTwoId].seen = true;
+            currentDeck[optionOneId].counterpartSeen = true;
+        }
+
         cards[optionOneId].classList.toggle("flipped");
         cards[optionTwoId].classList.toggle("flipped");
         currentDeck[optionOneId].flipped = false;
         currentDeck[optionTwoId].flipped = false;
-
-        handicap -= 0.25;
 
         resultDisplay.innerHTML = cardsWon.length + handicap;
         if (cardsWon.length + handicap < -1) {
@@ -200,16 +215,16 @@ function checkMatch() {
     cardsChosenIds = [];
 
     // Check for winning condition after the cards have been matched
-// ...
-if (cardsWon.length == currentDeck.length / 2) {
-    resultDisplay.innerHTML = "Congratulations you found them all";
-    showGameOverScreen("You won!", cardsWon.length + handicap);
-  } else if (cardsWon.length + handicap < -1) {
-    showGameOverScreen("You lose!");
-    flipRemainingCards();
-  }
-  // ...
-  }
+    if (cardsWon.length == currentDeck.length / 2) {
+        resultDisplay.innerHTML = "Congratulations you found them all";
+        showGameOverScreen("You won!", cardsWon.length + handicap);
+    } else if (cardsWon.length + handicap < -1) {
+        showGameOverScreen("You lose!");
+        flipRemainingCards();
+    }
+}
+
+
 
 function flipRemainingCards() {
     const cards = document.querySelectorAll(".card");
