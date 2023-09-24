@@ -96,8 +96,8 @@ button#back-to-game {
 
 body {
   /* background-image: url("images/table1.png"); */
-  background-color: rgba(0, 0, 0, 1)
-  background-repeat: repeat;
+  background-color: black;
+  /*background-repeat: repeat;*/
 }
 
 .card-container {
