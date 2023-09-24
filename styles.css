@@ -95,7 +95,7 @@ button#back-to-game {
 }
 
 body {
-  background-image: url("images/table1.png");
+  /* background-image: url("images/table1.png"); */
   background-repeat: repeat;
 }
 
