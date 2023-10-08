@@ -9,7 +9,7 @@ function createCardBackGrid() {
         cardBack.classList.add("card");
 
         const cardBackImg = document.createElement("img");
-        cardBackImg.setAttribute("src", `images/${cardName}.png`);
+        cardBackImg.setAttribute("src", `images/${cardName}.webp`);
         cardBackImg.setAttribute("data-id", index);
         cardBackImg.classList.add("cardback-option");
 

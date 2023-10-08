@@ -3,7 +3,7 @@ const cardBackDeck = []
 cardBackOptions.forEach((cardName) => {
     const card = {
         name: cardName,
-        img: `images/${cardName}.png`,
+        img: `images/${cardName}.webp`,
     }
 
     cardBackDeck.push(card);
@@ -34,7 +34,7 @@ let AllPairsOfCards = []
     // Apply the card back to each card's cardback element
     const cardBackElements = document.querySelectorAll(".card .cardback");
     cardBackElements.forEach((cardBackElement) => {
-        cardBackElement.setAttribute("src", `images/${cardBackName}.png`);
+        cardBackElement.setAttribute("src", `images/${cardBackName}.webp`);
     });
     return storedSelectedCardBackIndex;
 }
@@ -72,7 +72,7 @@ function createUniqueDeck(uniqueCards){
     uniqueCards.forEach((cardName) => {
         const card = {
             name: cardName,
-            img: `images/${cardName}.png`,
+            img: `images/${cardName}.webp`,
             flipped: false,
             seen: false // Add the 'seen' property here
         }
